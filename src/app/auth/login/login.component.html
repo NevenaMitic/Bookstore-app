@@ -1,0 +1,44 @@
+<mat-toolbar>
+
+    <div fxFlex style="margin-bottom: 5px;">  
+        <img style="height: 100px;"src="https://media.discordapp.net/attachments/796341438215487498/1138066181958402109/Screenshot_20230807_130716-removebg-preview.png" 
+        routerLink="/active">
+    </div>
+        <button fxLayoutAlign="end" mat-button routerLink="/">Home</button>
+    
+</mat-toolbar>
+
+
+ <section>
+    <form fxLayout="column" fxLayoutAlign="center center" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <h2>Log In</h2>
+        <mat-form-field style="width: 250px;">
+        <mat-label>Email</mat-label>
+            <input fxFlex="100%" type="email" matInput placeholder="example@mail.com" ngModel name="email" email required
+                #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty!</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Please use the correct email format. </mat-error>
+        </mat-form-field>
+
+    
+        <mat-form-field style="width: 250px;">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput [type]="showPassword ? 'text' : 'password' " ngModel name="password" required minlength="8"
+                #passInput="ngModel">
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                    {{showPassword?'visibility_off':'visibility'}}
+                </mat-icon>
+            <mat-hint align="end">{{ passInput.value?.length }} / 8</mat-hint> 
+        </mat-form-field> 
+        
+        <button class="btn1" type="submit" mat-button [disabled]="loginForm.invalid">Log In</button>
+
+        <div fxLayoutGap="20px" class="errors">
+        <mat-label fxLayoutAlign="row" *ngIf="errorExists">{{ errorText }}</mat-label>
+        </div>
+        <div class="register">
+            <p>Don't have an account ? <a routerLink="/signup"> Register</a></p>
+        </div>
+    </form>
+
+</section>

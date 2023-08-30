@@ -1,0 +1,33 @@
+.title{
+    padding-top: 10px;
+}
+h1{
+    text-align: center;
+    display: block;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    line-height: 1.5;
+    font-weight: 100;
+    
+    
+}
+
+h2 {
+    text-align: center;
+    display: block;
+    font-family: lato, serif;
+    font-size: 15px;
+    line-height: 0.3;
+    font-weight: 400;
+}
+mat-nav-list{
+    margin-left: 10px;
+}
+.user{
+    background-color:#f7dfb3;
+    border-radius: 5rem;
+    padding: .9rem 1.5rem;
+}
+.user:hover{
+    background:rgb(172, 185, 202);
+}

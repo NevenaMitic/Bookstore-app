@@ -1,0 +1,65 @@
+<mat-toolbar>
+
+    <div fxFlex style="padding:10px;" >  
+        <img style="height: 100px;"src="https://media.discordapp.net/attachments/796341438215487498/1138066181958402109/Screenshot_20230807_130716-removebg-preview.png" 
+        routerLink="/active">
+    </div>
+        <button fxLayoutAlign="end" mat-button routerLink="/">Home</button>
+    
+</mat-toolbar>
+
+
+<section>
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <h2>Sign Up </h2>
+<!--Name-->
+        <mat-form-field style="width: 250px;">
+            <mat-label>Name</mat-label>
+                <input type="text" matInput ngModel name="name" required
+                    #nameInput="ngModel">
+                <mat-error *ngIf="nameInput.hasError('required')">Field should not be empty!</mat-error>
+            </mat-form-field>
+<!--Email-->
+        <mat-form-field style="width: 250px;">
+            <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="example@mail.com" ngModel name="email" email required
+                     #emailInput="ngModel">
+                <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty!</mat-error>
+                 <mat-error *ngIf="!emailInput.hasError('required')">Please use the correct email format.</mat-error>
+        </mat-form-field>    
+<!--password-->
+        <mat-form-field style="width: 250px;"><mat-hint>Minimum 8 characters required</mat-hint>
+            <mat-label>Password</mat-label>
+                <input type="password" matInput  [type]="showPassword ? 'text' : 'password'" ngModel name="password" required minlength="8"
+                    #passInput="ngModel">
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                    {{showPassword?'visibility_off':'visibility'}}
+                </mat-icon>
+            <mat-hint align="end">{{ passInput.value?.length }} / 8</mat-hint>
+        </mat-form-field>
+<!--phone number-->
+        <mat-form-field style="width: 250px;">
+            <mat-label>Phone Number</mat-label>
+                <input type="number" matInput placeholder="(xxx)xxx-xxxx" ngModel name="mobilePhone" required
+                     #mobilePhoneInput="ngModel">
+                <mat-error *ngIf="mobilePhoneInput.hasError('required')">Field should not be empty!</mat-error>
+         </mat-form-field>   
+<!--Address-->
+         <mat-form-field style="width: 250px;">
+            <mat-label>Address</mat-label>
+                <input type="text" matInput ngModel name="address" required
+                     #addressInput="ngModel">
+                <mat-error *ngIf="addressInput.hasError('required')">Field should not be empty!</mat-error>
+         </mat-form-field>   
+
+          <!-- Confirmation -->
+          <mat-label  class="errors" *ngIf="errorExists"> {{ errorText }} </mat-label>
+        <button class="btn1" type="submit" mat-button  [disabled]="f.invalid">Sign Up</button>
+
+
+<!-- Terms of use-->
+        <mat-checkbox ngModel name="acceptance" required>
+            I accept the terms of conditions of use.
+        </mat-checkbox> 
+    </form>
+</section>

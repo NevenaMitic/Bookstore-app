@@ -1,0 +1,19 @@
+<div class="wrapper">
+
+  <div class="title">
+      <p class="bold-text">Our Books</p>
+  </div>
+ 
+    
+      <div class="container ">
+        <div class="ui-card" *ngFor="let book of product">
+          <img src="{{ book.thumbnail }}">
+          <div class="description" fxLayout="column" fxLayoutAlign="center center">
+            <h3>{{ book.name }}</h3>
+              <p>{{ book.author }}</p> 
+              <a [routerLink]="'/view/product/' + book.id + '/' + encodeBookData(book)">read more</a>
+          </div>
+        </div>
+      </div>
+
+</div>

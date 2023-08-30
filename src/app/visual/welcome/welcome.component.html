@@ -1,0 +1,40 @@
+
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav opened="false">
+        <img style="height: 95px;"src="https://media.discordapp.net/attachments/796341438215487498/1138066181958402109/Screenshot_20230807_130716-removebg-preview.png">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/login"(click)="sidenav.close()"> Log In </a>
+
+            <a mat-list-item routerLink="/signup" (click)="sidenav.close()">Sign Up</a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <mat-toolbar>
+            <div fxHide.gt-xs>
+                <button mat-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon> 
+                </button>
+            </div>
+
+            <div fxFlex style="padding:10px;">  
+                <img style="height: 100px;"src="https://media.discordapp.net/attachments/796341438215487498/1138066181958402109/Screenshot_20230807_130716-removebg-preview.png" 
+                routerLink="/">
+            </div>
+
+            <div fxFlex fxLayoutAlign="end" fxLayoutGap="15px" fxHide.xs>
+                <button mat-button routerLink="/login">
+                    <mat-icon>login</mat-icon> Log In 
+                </button>
+                <button mat-button routerLink="/signup">
+                     <mat-icon>person</mat-icon> Sign Up
+                </button>
+            </div>
+        </mat-toolbar>
+          <app-banner></app-banner>
+          <app-footer></app-footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>

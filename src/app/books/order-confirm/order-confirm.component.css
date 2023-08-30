@@ -1,0 +1,29 @@
+.card{
+    background: white;
+    padding: 80px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px #C8D0D8;
+    display: inline-block;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.card h2{
+    font-family: 'Trocchi', serif;
+    font-size: 28px;
+    font-weight: lighter;
+    color: #474747;
+}
+.card h3{
+    font-family: 'Trocchi', serif;
+    font-size: 28px;
+    font-weight: lighter;
+    color: #474747;
+}
+.card h4{
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    font-weight: lighter;
+    color: #597a6f;
+}

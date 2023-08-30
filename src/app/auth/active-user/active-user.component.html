@@ -1,0 +1,45 @@
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav opened="false">
+        <img style="height: 95px;"src="https://media.discordapp.net/attachments/796341438215487498/1138066181958402109/Screenshot_20230807_130716-removebg-preview.png">
+        <mat-nav-list>
+              <button class="user" mat-button  (click)="openProfile(this.userService.currentUser.id)">
+                  {{ this.userService.currentUser.email }}
+              </button>
+
+              <a mat-list-item routerLink="/cart"(click)="sidenav.close()">Your Cart</a>
+              <a mat-list-item routerLink="/orders"(click)="sidenav.close()"> Order status </a>
+  
+              <a mat-list-item (click)="openLogoutDialog()">Logout</a>
+  
+          </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content> <!--toolbar-->
+          <mat-toolbar>
+              <div fxHide.gt-xs>
+                  <button mat-button (click)="sidenav.toggle()">
+                      <mat-icon>menu</mat-icon> 
+                  </button>
+              </div>
+  
+              <div fxFlex style="padding:5px;">  
+                  <img style="height: 100px;"src="https://media.discordapp.net/attachments/796341438215487498/1138066181958402109/Screenshot_20230807_130716-removebg-preview.png">
+              </div>
+  
+              <div fxFlex fxLayoutAlign="end" fxLayoutGap="15px" fxHide.xs>
+                  <button class="user" mat-button  (click)="openProfile(this.userService.currentUser.id)">
+                      {{ this.userService.currentUser.email }}
+                  </button>
+                  <button mat-button (click)="openLogoutDialog()">
+                      <mat-icon>logout</mat-icon> Log Out 
+                  </button>
+              </div>
+          </mat-toolbar>
+
+            <app-header2></app-header2>
+            <app-banner-user></app-banner-user>
+            <app-products></app-products>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

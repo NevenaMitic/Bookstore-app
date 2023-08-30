@@ -1,0 +1,51 @@
+<!--navigation-->
+<app-header></app-header>
+<app-header2></app-header2>
+
+
+<!--book card-->
+<div class="container" fxLayoutAlign="center center">
+  <div class="row product-detail">
+      <div class="col-sm-4">
+          <img class="product-img" src="{{bookData.thumbnail}}">
+    </div>
+ 
+
+  <!-- right side-->
+  <div class="col-sm-8">
+      <div class="product-text">
+          <h1>{{bookData.name}}</h1>
+          <h2>by {{bookData.author}}</h2>
+          <hr>
+          <p>Genre: {{bookData.genre}}</p> 
+          <p>Pages: {{bookData.pages}}</p>
+          <p>Publish date: {{bookData.date | date}}</p>
+          <a class="fa fa-star checked"> {{bookData.mark}}</a>
+          <div class="product-price">
+            <p>{{bookData.price | currency:'EUR'}}</p>
+          </div>
+
+          <div>
+            <button (click)="addToCart(bookData)" routerLink="/cart" class="btn1">buy now</button>&nbsp;
+            <button (click)="addToCart(bookData)" *ngIf="showAdd" class="btn2">add to cart</button>&nbsp;
+            <button (click)="removeItem(bookData)" *ngIf="showRemove" class="btn2">remove item</button>
+         </div>
+     
+      </div>
+  </div>
+</div>
+</div>
+<section>
+  <h1>Reviews</h1> <hr>
+  <div class="review" fxLayout="column">
+      <mat-card *ngFor="let review of reviews">
+          <ng-container *ngIf="review.id === bookData.id">
+              <mat-card-header>
+                  <mat-card-title>{{ review.name }}</mat-card-title>
+                  <mat-card-subtitle>{{ review.date | date }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>{{ review.content }}</mat-card-content>
+          </ng-container>
+      </mat-card>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+.title{
+	background:#3a3939;
+	color: #686666;
+	padding: 20px;
+    margin-bottom: 15px;
+	font-style: oblique;
+	text-align: center;
+	font-size: 2.5rem;
+	box-shadow: 0 2px 20px #C8D0D8;
+    font-family: 'Raleway', sans-serif;
+}
+.actions a{
+    color: #8d8d8d;
+    font-size: 15px;
+    text-decoration: none;
+	margin-right: 10px;
+	margin-left: 20px;
+   }
+
+   .actions a:hover {
+    color:#fcf83b;
+  }
+  .btn1 {
+    border: transparent;
+    border-radius: 60px;
+	color: white;
+    margin-right: 10px;
+	margin-left: 20px;
+    height: 35px;
+    width: 120px;
+    font-size: 16px;
+    background-color:#cfbe9d;
+}
+.btn1:hover{
+    background-color: #8d8d8d;
+}

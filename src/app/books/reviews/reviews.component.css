@@ -1,0 +1,29 @@
+.btn1 {
+  
+    height: 50px;
+    width: 160px;
+    margin: 0 7px 0 16px;
+    border: transparent;
+    border-radius: 60px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin-bottom: 10px;
+    background-color:  rgb(172, 185, 202);;
+}
+mat-card-title{
+	color: #686666;
+	padding-top: 20px;
+	font-style: oblique;
+	font-size: 1.7rem;
+    font-family: 'Raleway', sans-serif;
+}
+.rating-buttons{
+    color:yellow;
+}
+.rating-buttons :hover{
+color:rgb(255, 197, 90);
+}

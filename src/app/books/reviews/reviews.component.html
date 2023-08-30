@@ -1,0 +1,26 @@
+
+<!--review card-->
+<mat-card 
+ fxLayout="column"  fxLayoutAlign="center center">
+
+ <div style="position: relative; align-self: flex-end;">
+    <button mat-icon-button [mat-dialog-close]="true">
+       <mat-icon matListIcon>close</mat-icon>
+    </button>
+</div>
+    <mat-card-title>Leave a Review</mat-card-title>
+    <div class="rating-buttons">
+        <button mat-icon-button *ngFor="let rating of ratings" (click)="setRating(rating)">
+          <mat-icon>{{ rating <= review.rating ? 'star' : 'star_border' }}</mat-icon>
+        </button>
+      </div>
+    <form   fxLayout="column" (ngSubmit)="submitReview()">
+      <mat-form-field>
+        <input matInput placeholder="Name" name="name" [(ngModel)]="review.name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Comment" name="comment" [(ngModel)]="review.comment" required></textarea>
+      </mat-form-field>
+      <button mat-button class="btn1" type="submit">Submit Review</button>
+    </form>
+  </mat-card>

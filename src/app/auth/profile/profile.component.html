@@ -1,0 +1,143 @@
+
+<section class="profile">
+
+    <div fxLayoutAlign="space-between">
+     <button mat-icon-button [mat-dialog-close]="true">
+        <mat-icon matListIcon>close</mat-icon>
+     </button>
+    <h1>Your profile</h1>
+
+        <mat-icon matListIcon 
+        *ngIf="this.profileForInput.id == this.userService.currentUser.id"
+        (click)="this.isEditing = !this.isEditing">edit</mat-icon>
+    </div>
+
+    <mat-dialog-content fxLayoutAlign="center center">
+
+        <form 
+            fxFlex
+            fxLayout="column" 
+            fxLayoutGap="2vh"
+            #editForm="ngForm"
+            (ngSubmit)="finishEditing(editForm)">
+
+            
+                                       <!--Name-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign=" start center" fxLayoutGap="1vw">
+                <mat-icon>person</mat-icon>
+
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Name</mat-card-subtitle>
+                    <span>{{ this.profileForInput.name  }} </span>
+                </div>
+
+                <mat-form-field fxLayout="column" *ngIf="this.isEditing">
+                    <input matInput type="text" placeholder="Your name" ngModel name="name"
+                    [(ngModel)]="this.profileForInput.name" required #nameInput="ngModel">
+
+                    <mat-error *ngIf="nameInput.hasError('required')">Name is required!</mat-error>
+                </mat-form-field>
+
+            </div>
+        </mat-card>
+                               <!--Email-->
+        <mat-card>
+                <div fxLayout="row" fxLayoutAlign=" start center" fxLayoutGap="1vw">
+                <mat-icon>mail</mat-icon>
+
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Email</mat-card-subtitle>
+                    <span>{{ this.profileForInput.email }} </span>
+                </div>
+
+                <mat-form-field fxLayout="column" *ngIf="this.isEditing">
+                    <input matInput type="email" placeholder="Your email" ngModel name="email"
+                    [(ngModel)]="this.profileForInput.email" email required #emailInput="ngModel">
+
+                    <mat-error *ngIf="emailInput.hasError('required')">Email is required!</mat-error>
+                    <mat-error *ngIf="!emailInput.hasError('required')">Please use the correct email format.</mat-error>
+                </mat-form-field>
+
+                </div>
+        </mat-card>
+                                <!--Password-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign=" start center" fxLayoutGap="1vw">
+                <mat-icon>key</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Password</mat-card-subtitle>
+                    <span>{{ this.profileForInput.password }} </span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput  placeholder="Your password" [type]="showPassword ? 'text' : 'password' " ngModel name="password" minlength="8"
+                    [(ngModel)]="this.profileForInput.password" required #passwordInput="ngModel">
+                    <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                        {{showPassword?'visibility_off':'visibility'}}
+                    </mat-icon>
+                    <mat-hint align="end"> {{ passwordInput.value?.length }} / 8 </mat-hint>
+                </mat-form-field>  
+
+            </div>
+        </mat-card>
+                             <!--Address-->
+   <mat-card>
+    <div fxLayout="row" fxLayoutAlign=" start center" fxLayoutGap="1vw">
+       <mat-icon>location_on</mat-icon>
+
+           <div fxLayout="column" *ngIf="!this.isEditing">
+               <mat-card-subtitle>Address</mat-card-subtitle>
+               <span>{{ this.profileForInput.address }} </span>
+           </div>
+
+       <mat-form-field fxLayout="column" *ngIf="this.isEditing">
+               <input matInput type="text" placeholder="Your address" ngModel name="address"
+               [(ngModel)]="this.profileForInput.address" required #addressInput="ngModel">
+
+               <mat-error *ngIf="addressInput.hasError('required')">Please write your full address.</mat-error>
+       </mat-form-field>
+   </div>
+</mat-card>        
+                          <!--Mobile phone-->
+
+    <mat-card>
+    <div fxLayout="row" fxLayoutAlign=" start center" fxLayoutGap="1vw">
+        <mat-icon>phone</mat-icon>
+                        
+            <div fxLayout="column" *ngIf="!this.isEditing">
+                <mat-card-subtitle>Mobile phone</mat-card-subtitle>
+                <span>{{ this.profileForInput.mobilePhone }} </span>
+            </div>
+                        
+        <mat-form-field fxLayout="column" *ngIf="this.isEditing">
+                <input matInput type="number" placeholder="Your mobile phone" ngModel name="mobilePhone"
+                [(ngModel)]="this.profileForInput.mobilePhone" required #mobilePhoneInput="ngModel">
+                        
+                <mat-error *ngIf="mobilePhoneInput.hasError('required')">Mobile number is required.</mat-error>
+        </mat-form-field>
+    </div>
+</mat-card>    
+
+                                <!--Favorite genre-->
+<mat-card>
+    <div fxLayout="row" fxLayoutAlign=" start center" fxLayoutGap="1vw">
+       <mat-icon>favorite</mat-icon>
+
+           <div fxLayout="column" *ngIf="!this.isEditing">
+               <mat-card-subtitle>Favorite genre</mat-card-subtitle>
+               <span>{{ this.profileForInput.favoriteGenre }} </span>
+           </div>
+
+       <mat-form-field fxLayout="column" *ngIf="this.isEditing">
+               <input matInput type="text" ngModel name="favoriteGenre"
+               [(ngModel)]="this.profileForInput.favoriteGenre" #favoriteGenreInput="ngModel">
+       </mat-form-field>
+   </div>
+</mat-card>
+    
+                           <!--confirmation-->
+
+<button class="save" *ngIf="this.isEditing" mat-raised-button type="submit">Save</button>                               
+</form>
+</mat-dialog-content>
+</section>

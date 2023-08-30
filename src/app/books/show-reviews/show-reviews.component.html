@@ -1,0 +1,15 @@
+<section style="margin-left: 80px;">
+    <h1>Reviews</h1> <hr>
+    <div class="review" fxLayoutAlign="space-between">
+        <mat-card *ngFor="let review of reviews">
+            <ng-container *ngIf="review.productId === desiredProductId">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{ review.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ review.date }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>{{ review.content }}</mat-card-content>
+            </ng-container>
+        </mat-card>
+    </div>
+</section>

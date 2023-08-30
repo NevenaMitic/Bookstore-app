@@ -1,0 +1,151 @@
+<app-header></app-header>
+
+
+<ng-container *ngIf="showProduct.length !=0">
+    <!--table of products-->
+    <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-sm-7">
+
+                    <div class="title">
+                        <p class="bold-text">Your Shopping Cart</p>
+                    </div>
+                    <table class="table table-bordered">
+                        <tr align="center">
+                            <th width="25%">Image</th>
+                            <th width="50%">Details</th>
+                            <th width="20%"> Price</th>
+                            <th width="5%"></th>
+                        </tr>
+                    <tbody> 
+                        <tr *ngFor="let item of showProduct">
+                            <td align="center"><img src="{{item.thumbnail}}" class="img-responsive" width="100px"></td>
+                            <td style=" font-size: 15px; vertical-align: middle;">
+                                <p><strong>Book name: </strong>{{ item.name }}</p>
+                                <p><strong>Author: </strong>{{ item.author }}</p>
+                                <p><strong>Genre: </strong> {{ item.genre }}</p>
+                                <p><strong>Pages: </strong> {{ item.pages }}</p>
+                                <p><strong>Publish date: </strong>{{ item.date | date }}</p>
+                            </td>
+                            <td align="center" style="font-size: 20px; vertical-align: middle;">
+                                <p>{{ item.price | currency:'EUR'}}</p>
+                            </td>
+
+                            <td align="center" style="vertical-align: middle;">
+                                <a (click)="deleteProduct(item)"><mat-icon>close</mat-icon></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <button (click)="empty()" class="btn2">Empty cart</button>
+                    </table>
+                </div>
+
+                    <!--total price-->
+                <div class="col-sm-3" style="background-color:#cfbe9d; margin-left: 2rem;">
+                    <div style="padding: 20px;">
+                    <h1 style="text-align: center;">Your Total Bill</h1> <hr>
+                    <P>Total items: {{ totalQuantity }}</P>
+                    <p>Shipping: FREE</p> <br>
+                    <p style="font-size: 30px;"><strong> {{ totalAmount | currency:'EUR' }}</strong></p>
+                    </div>
+                     <!--payment form-->
+                    <hr>
+                <div class="tab-content">
+                    <!-- credit card info-->
+                <div>
+                    <h1>Checkout</h1>
+                    <form role="form" [formGroup]="myform">
+                        <div class="form-group"> 
+                            <label for="username">
+                            <h5>Card Owner</h5>
+                            </label> 
+                                <input type="text" formControlName="username" placeholder="Card Owner Name" required class="form-control "> </div>
+                                <div *ngIf="myform.get('username').hasError('required') && myform.get('username').touched" class="error-message">
+                                    Username is required.
+                                </div>
+                        <!--credit card number-->
+                        <div class="form-group"> <label for="cardNumber">
+                             <h5>Card number</h5>
+                             </label>
+                            <div class="input-group">
+                                <input type="text" maxlength="16" minlength="16" formControlName="cardNumber" placeholder="Valid card number" class="form-control " required></div>
+                                <small class="text-muted">Enter a 16-digit card number.</small>
+                        </div>
+                        <div *ngIf="myform.get('cardNumber').hasError('required') && myform.get('cardNumber').touched" class="error-message">
+                            Card number is required.
+                        </div>
+                        
+                            <!--Credit card details-->
+                            <div class="row">
+                                <div class="col-sm-8">
+                                  <div class="form-group">
+                                    <label>
+                                      <span><h5>Expiration Date</h5></span>
+                                    </label>
+                                    <div class="input-group">
+                                      <input
+                                        type="text"
+                                        maxlength="2"
+                                        placeholder="MM"
+                                        formControlName="MM"
+                                        class="form-control"
+                                        required
+                                      />
+                                      <input
+                                        type="text"
+                                        minlength="4"
+                                        maxlength="4"
+                                        placeholder="YY"
+                                        formControlName="YY"
+                                        class="form-control"
+                                        required
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              
+                                <div class="col-sm-4">
+                                  <div class="form-group mb-4">
+                                    <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
+                                      <h5>CVV <i class="fa fa-question-circle d-inline"></i></h5>
+                                    </label>
+                                    <input
+                                      type="text"
+                                      minlength=""
+                                      maxlength="3"
+                                      placeholder="XXX"
+                                      formControlName="CVV"
+                                      required
+                                      class="form-control"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                        <div align="center" class="card-footer"> 
+                                <button mat-button class="btn1" 
+                                routerLink="/order-confirm"
+                                (click)="onSubmit()"
+                                [disabled]="this.myform.invalid"> Confirm Payment </button>
+                        </div>    
+                    </form>
+            </div>
+        </div> <!--container ends-->
+     </div>
+    </div>
+ </div>
+</ng-container>
+
+<!--Empty cart-->
+<section fxLayoutAlign="center center" class="empty-cart" *ngIf="showProduct.length == 0">
+   <mat-card style="width: 420px;">
+        <img mat-card-image src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png">
+        <mat-card-content>
+            <h4 style="text-align: center;">Your shopping cart is empty</h4>
+            <h5 style="text-align: center;">Fill your cart with amazing books</h5>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="center">
+            <button class="btn2" routerLink="/active">Shop now</button>
+        </mat-card-actions>
+      </mat-card>
+</section>
