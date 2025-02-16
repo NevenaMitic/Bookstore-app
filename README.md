@@ -70,11 +70,4 @@ npm run e2e
 - **RxJS** - Reactive programming
 - **Karma & Jasmine** - Testing framework
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any inquiries or issues, feel free to open an issue or contact [your-email@example.com](mailto:your-email@example.com).
 
